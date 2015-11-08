@@ -156,6 +156,10 @@ public class UserSessionManager {
     }
 
     public String getUserRole() {
-        return pref.getString(KEY_ROLE,null);
+        return pref.getString(KEY_ROLE, null);
+    }
+
+    public String getUserId() {
+        return pref.getString(KEY_USER_ID, null);
     }
 }

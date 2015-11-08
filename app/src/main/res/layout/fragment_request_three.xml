@@ -5,7 +5,7 @@
     android:id="@+id/zzz">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
@@ -63,9 +63,8 @@
         android:id="@+id/fromTime"
         android:background="@drawable/time_background"
         android:padding="20dp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="50dp"
+        android:textSize="30dp"
         android:layout_below="@+id/textView4"
         android:layout_alignLeft="@+id/tillTime"
         android:layout_alignStart="@+id/tillTime" />
@@ -80,9 +79,8 @@
         android:gravity="center"
         android:background="@drawable/time_background"
         android:padding="20dp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="50dp"
+        android:textSize="30dp"
         android:layout_below="@+id/textView6"
         android:layout_centerHorizontal="true" />
 

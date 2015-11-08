@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.sixmogroup.app.sixmo.R;
 import com.sixmogroup.app.sixmo.RequestEventActivity;
+import com.sixmogroup.app.sixmo.utils.CommonUtils;
 
 public class RequestTwoFragment extends Fragment {
     TextView next;
@@ -23,7 +24,7 @@ public class RequestTwoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 RequestEventActivity activity= (RequestEventActivity) getActivity();
-                activity.setEventdate(datePicker.getDayOfMonth()+"-"+datePicker.getMonth()+"-"+datePicker.getYear());
+                activity.setEventdate(CommonUtils.formatDate(datePicker.getDayOfMonth(),datePicker.getMonth(),datePicker.getYear()));
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new RequestThreeFragment()).commit();
             }
         });

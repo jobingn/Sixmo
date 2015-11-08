@@ -55,13 +55,13 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("response json",response.toString());
                         try {
                             if(response.getString("response").equals("success")) {
-                                String userid=response.getString("memberid");
+                                String memberid=response.getString("memberid");
                                 String username=response.getString("name");
                                 String role=response.getString("role");
                                 String mobile=response.getString("mobile");
                                 String email=response.getString("email");
                                 UserSessionManager sessionManager=new UserSessionManager(getApplicationContext());
-                                sessionManager.createUserLoginSession(userid,username,email,mobile,role);
+                                sessionManager.createUserLoginSession(memberid,username,email,mobile,role);
                                 Intent eventsIntent;
                                 if(role.equals("user")) {
                                     eventsIntent = new Intent(getApplicationContext(), MainActivity.class);

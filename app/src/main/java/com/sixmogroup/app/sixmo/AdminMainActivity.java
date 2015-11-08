@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -16,8 +17,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.sixmogroup.app.sixmo.adapter.EventPagerAdapter;
+import com.sixmogroup.app.sixmo.utils.CommonUtils;
 import com.sixmogroup.app.sixmo.utils.UserSessionManager;
-
 
 public class AdminMainActivity extends AppCompatActivity {
     ViewPager mPager;

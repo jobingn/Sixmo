@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sixmogroup.app.sixmo.AdminMainActivity;
 import com.sixmogroup.app.sixmo.MainActivity;
 import com.sixmogroup.app.sixmo.R;
+import com.sixmogroup.app.sixmo.utils.UserSessionManager;
 
 
 public class RequestDoneFragment extends Fragment {
@@ -21,7 +23,12 @@ public class RequestDoneFragment extends Fragment {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainIntent=new Intent(getActivity(), MainActivity.class);
+                UserSessionManager sessionManager=new UserSessionManager(getActivity());
+                Intent mainIntent;
+                if(sessionManager.getUserRole().equals("admin"))
+                mainIntent=new Intent(getActivity(), AdminMainActivity.class);
+                else
+                mainIntent=new Intent(getActivity(), MainActivity.class);
                 startActivity(mainIntent);
                 getActivity().finish();
             }

@@ -12,6 +12,7 @@ import android.widget.TimePicker;
 
 import com.sixmogroup.app.sixmo.R;
 import com.sixmogroup.app.sixmo.RequestEventActivity;
+import com.sixmogroup.app.sixmo.utils.CommonUtils;
 
 public class RequestThreeFragment extends Fragment {
     TextView fromTime;
@@ -27,8 +28,7 @@ public class RequestThreeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 RequestEventActivity activity= (RequestEventActivity) getActivity();
-                activity.setStartTime(fromTime.getText().toString());
-                activity.setStartTime(tillTime.getText().toString());
+                activity.setEventTime(fromTime.getText().toString()+" to "+tillTime.getText().toString());
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new RequestFourFragment()).commit();
             }
         });
@@ -68,7 +68,7 @@ public class RequestThreeFragment extends Fragment {
                         }else{
                             minText=""+min;
                         }
-                        fromTime.setText(hour+":"+minText);
+                        fromTime.setText(CommonUtils.convertTime24to12(hour,min));
                         dialog.dismiss();
                     }
                 });
@@ -112,7 +112,7 @@ public class RequestThreeFragment extends Fragment {
                         }else{
                             minText=""+min;
                         }
-                        tillTime.setText(hour+":"+minText);
+                        tillTime.setText(CommonUtils.convertTime24to12(hour,min));
                         dialog.dismiss();
                     }
                 });
