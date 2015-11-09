@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
 
@@ -114,5 +115,19 @@ public class CommonUtils {
         }
         dateFormated=dateFormated.concat(" "+year);
         return dateFormated;
+    }
+    public static boolean validateEmail(String email){
+        if (email == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
+    }
+    public static boolean validateMobile(String mobile){
+        if(mobile == null || mobile.length()!=10) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

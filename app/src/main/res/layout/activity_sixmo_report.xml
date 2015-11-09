@@ -126,8 +126,39 @@
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     android:textStyle="bold"
-                    android:id="@+id/pendinRequestsCount"
+                    android:id="@+id/pendingRequestsCount"
                     android:layout_below="@+id/pendingRequestsLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_circle_background">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Declined Requests"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:id="@+id/declinedRequestsLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="40dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:id="@+id/declinedRequestsCount"
+                    android:layout_below="@+id/declinedRequestsLabel"
                     android:gravity="center"
                     android:layout_marginTop="5dp"
                     />
