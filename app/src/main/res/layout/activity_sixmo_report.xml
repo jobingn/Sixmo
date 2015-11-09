@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sixmogroup.app.sixmo.SixmoReportActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+           <RelativeLayout
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:layout_gravity="center"
+               android:layout_marginTop="30dp"
+               android:background="@drawable/button_circle_background">
+               <TextView
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Total Projects"
+                   android:textColor="@color/white"
+                   android:textSize="15dp"
+                   android:id="@+id/totalProjectsLabel"
+                   android:gravity="center"
+                   android:layout_marginTop="40dp"
+                   />
+               <TextView
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:text="0"
+                   android:textColor="@color/white"
+                   android:textSize="30dp"
+                   android:textStyle="bold"
+                   android:id="@+id/totalProjectsCount"
+                   android:layout_below="@+id/totalProjectsLabel"
+                   android:gravity="center"
+                   android:layout_marginTop="5dp"
+                   />
+
+           </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_circle_background">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Members"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:id="@+id/totalMembersLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="40dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:id="@+id/totalMembersCount"
+                    android:layout_below="@+id/totalMembersLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_circle_background">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Active Projects"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:id="@+id/activeProjectsLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="40dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:id="@+id/activeProjectsCount"
+                    android:layout_below="@+id/activeProjectsLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_circle_background">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pending Requests"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:id="@+id/pendingRequestsLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="40dp"
+                    />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:id="@+id/pendinRequestsCount"
+                    android:layout_below="@+id/pendingRequestsLabel"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

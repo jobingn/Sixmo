@@ -35,4 +35,5 @@
     <string name="action_event_all_requests">Requests</string>
     <string name="action_my_profile">My Profile</string>
     <string name="action_event_users">Search Member</string>
+    <string name="action_status">Satistics</string>
 </resources>
