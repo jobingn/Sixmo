@@ -53,7 +53,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.eventid=data.get(position).getEventid();
         holder.title.setText(data.get(position).getName());
         holder.venue.setText(data.get(position).getVenue());
-        holder.dateTime.setText(data.get(position).getTime() + " on " + data.get(position).getEventDate());
+        holder.dateTime.setText("On "+data.get(position).getEventDate() + " at " + data.get(position).getTime());
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(CommonUtils.imageUploadUrl + data.get(position).getImagePath(), holder.banner);
     }
@@ -91,7 +91,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
                     try {
                         Intent detailIntent=new Intent(context, EventDetailActivity.class);
                         detailIntent.putExtra("name", response.getString("name"));
-                        detailIntent.putExtra("datetime", "On " + response.getString("eventdate") + " at" + response.getString("time"));
+                        detailIntent.putExtra("datetime", "On " + response.getString("eventdate") + " at " + response.getString("time"));
                         detailIntent.putExtra("place", response.getString("place"));
                         detailIntent.putExtra("description", response.getString("description"));
                         detailIntent.putExtra("imagepath", response.getString("imagepath"));

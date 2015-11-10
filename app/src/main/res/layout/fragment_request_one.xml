@@ -67,12 +67,12 @@
         android:src="@drawable/default_banner"
         />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="bottom|right"
             android:id="@+id/imageViewEdit"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="12dp"
             android:src="@android:drawable/ic_menu_edit"
             />
     </FrameLayout>

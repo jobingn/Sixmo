@@ -75,14 +75,14 @@ public class CommonUtils {
         String timeSet = "";
         if (hours > 12) {
             hours -= 12;
-            timeSet = "PM";
+            timeSet = "pm";
         } else if (hours == 0) {
             hours += 12;
-            timeSet = "AM";
+            timeSet = "am";
         } else if (hours == 12)
-            timeSet = "PM";
+            timeSet = "pm";
         else
-            timeSet = "AM";
+            timeSet = "am";
 
 
         String minutes = "";

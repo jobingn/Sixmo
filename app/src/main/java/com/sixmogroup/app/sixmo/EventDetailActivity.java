@@ -20,14 +20,14 @@ public class EventDetailActivity extends AppCompatActivity {
     TextView description;
     ImageView banner;
     String eventid;
-    ImageButton call;
+    ImageView call;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
         getSupportActionBar().hide();
-        call = (ImageButton) findViewById(R.id.call);
+        call = (ImageView) findViewById(R.id.call);
         eventName = (TextView) findViewById(R.id.eventName);
         dateTime = (TextView) findViewById(R.id.eventDateTime);
         venue = (TextView) findViewById(R.id.eventVenue);

@@ -55,7 +55,10 @@ public class RequestFourFragment extends Fragment {
                 activity.setPerStag(perStag.getText().toString());
                 activity.setOthersPrice(othersPrice.getText().toString());
                 activity.setDescription(description.getText().toString());
+                if(activity.getBannerPath()!=null)
                 encodeImagetoString();
+                else
+                requestUserEvent();
             }
         });
         return  rootView;

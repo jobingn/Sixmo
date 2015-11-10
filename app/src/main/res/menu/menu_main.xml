@@ -19,7 +19,6 @@
     <item
         android:id="@+id/action_user"
         android:orderInCategory="300"
-        android:title="User"
-        android:icon="@android:drawable/stat_notify_voicemail"
+        android:title="bell"
         app:showAsAction="ifRoom"></item>
 </menu>
