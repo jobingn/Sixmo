@@ -21,7 +21,7 @@ public class EventDetailActivity extends AppCompatActivity {
     ImageView banner;
     String eventid;
     ImageView call;
-
+    ImageLoader imageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,15 @@ public class EventDetailActivity extends AppCompatActivity {
         dateTime.setText(getIntent().getExtras().getString("datetime"));
         venue.setText(getIntent().getExtras().getString("place"));
         description.setText(getIntent().getExtras().getString("description"));
+        imageLoader = ImageLoader.getInstance();
+        banner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent bannerViewIntent=new Intent(getApplicationContext(), BannerViewActivity.class);
+                bannerViewIntent.putExtra("imagepath",getIntent().getExtras().getString("imagepath"));
+                startActivity(bannerViewIntent);
+            }
+        });
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +55,6 @@ public class EventDetailActivity extends AppCompatActivity {
                     startActivity(callPhone);
             }
         });
-        ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(CommonUtils.imageUploadUrl + getIntent().getExtras().getString("imagepath"), banner);
 
     }

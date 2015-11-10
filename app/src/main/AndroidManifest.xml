@@ -47,6 +47,10 @@
         </activity>
         <activity android:name=".SearchMemberActivity" >
         </activity>
+        <activity android:name=".MyRequestsActivity" >
+        </activity>
+        <activity android:name=".BannerViewActivity" android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>

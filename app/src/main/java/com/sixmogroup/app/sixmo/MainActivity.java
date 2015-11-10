@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         AsyncHttpClient client=new AsyncHttpClient();
         eventModels.clear();
         RequestParams params=new RequestParams();
-        client.post(CommonUtils.baseUrl + "allEvents", params, new JsonHttpResponseHandler() {
+        client.post(CommonUtils.baseUrl+"allEvents", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
@@ -136,6 +136,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_my_event_requests) {
+            Intent intent=new Intent(getApplicationContext(),MyRequestsActivity.class);
+            startActivity(intent);
+        }
         if (id == R.id.action_logout) {
             UserSessionManager sessionManager=new UserSessionManager(getApplicationContext());
             sessionManager.logoutUser();
