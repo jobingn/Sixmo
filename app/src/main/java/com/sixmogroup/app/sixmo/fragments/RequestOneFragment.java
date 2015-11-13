@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,11 @@ public class RequestOneFragment extends Fragment {
                 activity.setBannerPath(bannerPath);
                 activity.setBannerFileName(bannerFileName);
                 activity.setPlace(place.getText().toString());
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new RequestTwoFragment()).commit();
+                FragmentManager fm=getActivity().getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.fragment, new RequestTwoFragment());
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
         editImage.setOnClickListener(new View.OnClickListener() {

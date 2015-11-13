@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -165,7 +167,10 @@ public class RequestFourFragment extends Fragment {
                 try {
                     if (response.getString("response").equals("success")) {
                         progressDialog.dismiss();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new RequestDoneFragment()).commit();
+                        FragmentManager fm=getActivity().getSupportFragmentManager();
+                        FragmentTransaction ft=fm.beginTransaction();
+                        ft.replace(R.id.fragment, new RequestDoneFragment());
+                        ft.commit();
                     } else {
                         Toast.makeText(getActivity(), "Event request failure", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();

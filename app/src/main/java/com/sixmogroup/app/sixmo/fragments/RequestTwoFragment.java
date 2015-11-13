@@ -2,6 +2,8 @@ package com.sixmogroup.app.sixmo.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,11 @@ public class RequestTwoFragment extends Fragment {
             public void onClick(View view) {
                 RequestEventActivity activity= (RequestEventActivity) getActivity();
                 activity.setEventdate(CommonUtils.formatDate(datePicker.getDayOfMonth(),datePicker.getMonth(),datePicker.getYear()));
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new RequestThreeFragment()).commit();
+                FragmentManager fm=getActivity().getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.fragment, new RequestThreeFragment());
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
         return  rootView;

@@ -1,29 +1,16 @@
 package com.sixmogroup.app.sixmo;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
+import com.sixmogroup.app.sixmo.fragments.RequestFourFragment;
 import com.sixmogroup.app.sixmo.fragments.RequestOneFragment;
-import com.sixmogroup.app.sixmo.utils.CommonUtils;
-import com.sixmogroup.app.sixmo.utils.UserSessionManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-
-import cz.msebera.android.httpclient.Header;
-
+import com.sixmogroup.app.sixmo.fragments.RequestThreeFragment;
+import com.sixmogroup.app.sixmo.fragments.RequestTwoFragment;
 
 public class RequestEventActivity extends AppCompatActivity {
     String name;
@@ -114,21 +101,34 @@ public class RequestEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_event);
         getSupportActionBar().hide();
-        Fragment fragmentOne=new RequestOneFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment,fragmentOne).commit();
-}
-
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        RequestOneFragment fragmentOne = new RequestOneFragment();
+        ft.replace(R.id.fragment, fragmentOne);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
     @Override
     public void onBackPressed() {
-
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-
-        if (count == 0) {
-            super.onBackPressed();
-            //additional code
-        } else {
-            getSupportFragmentManager().popBackStack();
+        int count = getSupportFragmentManager().getBackStackEntryCount()-1;
+        Log.d("Backstack count",""+count);
+    Fragment fragment=null;
+    switch (count){
+        case 0: {
+            this.finish();
+           break;}
+        case 1: fragment=new RequestOneFragment(); break;
+        case 2: fragment=new RequestTwoFragment(); break;
+        case 3: fragment=new RequestThreeFragment(); break;
+        case 4: fragment=new RequestFourFragment(); break;
+    }
+        if(count!=0) {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.popBackStack();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment, fragment);
+            //ft.addToBackStack(null);
+            ft.commit();
         }
-
     }
 }

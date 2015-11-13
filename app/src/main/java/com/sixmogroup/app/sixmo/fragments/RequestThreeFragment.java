@@ -3,6 +3,8 @@ package com.sixmogroup.app.sixmo.fragments;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +31,11 @@ public class RequestThreeFragment extends Fragment {
             public void onClick(View view) {
                 RequestEventActivity activity= (RequestEventActivity) getActivity();
                 activity.setEventTime(fromTime.getText().toString()+" to "+tillTime.getText().toString());
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new RequestFourFragment()).commit();
+                FragmentManager fm=getActivity().getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.fragment, new RequestFourFragment());
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
         fromTime.setOnClickListener(new View.OnClickListener() {
