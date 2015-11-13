@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        app:cardCornerRadius="5dp"
+        android:layout_below="@+id/pricedetailsview"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/default_banner"
+                android:scaleType="fitXY"
+                android:id="@+id/imageViewBanner" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:alpha="0.9"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="vertical"
+                android:layout_gravity="right|bottom"
+                android:background="@drawable/content_bg"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/eventName"
+                    android:text="Event Name"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#fefefe"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/eventDateTime"
+                    android:text="Date and Time"
+                    android:textColor="#fefefe"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/eventVenue"
+                    android:text="Venue"
+                    android:textColor="#fefefe"/>
+            </LinearLayout>
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

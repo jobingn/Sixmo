@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_logo);
         CommonUtils.checkInternetConnection(this);
         setTitle("");
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
