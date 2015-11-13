@@ -29,7 +29,6 @@ public class RequestEventDetailActivity extends AppCompatActivity {
     TextView accept;
     TextView decline;
     ImageView banner;
-    String eventid;
     ImageButton call;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,6 @@ public class RequestEventDetailActivity extends AppCompatActivity {
         accept = (TextView) findViewById(R.id.textViewAccept);
         decline= (TextView) findViewById(R.id.textViewDecline);
         banner = (ImageView) findViewById(R.id.imageViewBanner);
-        System.out.println(eventid);
         eventName.setText(getIntent().getExtras().getString("name"));
         dateTime.setText(getIntent().getExtras().getString("datetime"));
         venue.setText(getIntent().getExtras().getString("place"));

@@ -55,6 +55,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.venue.setText(data.get(position).getVenue());
         holder.dateTime.setText("On "+data.get(position).getEventDate() + " at " + data.get(position).getTime());
         ImageLoader imageLoader = ImageLoader.getInstance();
+        holder.banner.setImageBitmap(null);
         imageLoader.displayImage(CommonUtils.imageUploadUrl + data.get(position).getImagePath(), holder.banner);
     }
 
