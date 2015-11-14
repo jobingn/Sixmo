@@ -41,6 +41,16 @@ public class RequestFourFragment extends Fragment {
     EditText description;
     String encodedString;
     ProgressDialog progressDialog;
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        RequestEventActivity activity= (RequestEventActivity) getActivity();
+        activity.setPerStag(perStag.getText().toString());
+        activity.setOthersPrice(othersPrice.getText().toString());
+        activity.setDescription(description.getText().toString());
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.fragment_request_four, container, false);
@@ -50,6 +60,13 @@ public class RequestFourFragment extends Fragment {
         othersPrice=(EditText)rootView.findViewById(R.id.othersPrice);
         description=(EditText)rootView.findViewById(R.id.name);
         requestEvent=(TextView)rootView.findViewById(R.id.requestEvent);
+        RequestEventActivity activity= (RequestEventActivity) getActivity();
+        if(activity.getPerStag()!=null)
+            perStag.setText(activity.getPerStag());
+        if(activity.getOthersPrice()!=null)
+            othersPrice.setText(activity.getOthersPrice());
+        if(activity.getDescription()!=null)
+            description.setText(activity.getDescription());
         requestEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,6 +176,18 @@ public class RequestFourFragment extends Fragment {
         params.put("status",0);
         params.put("organizer",sessionManager.getUserId());
         params.put("imagepath",activity.getBannerFileName());
+        //----------------------------------------------
+        Log.d("name", activity.getName());
+        Log.d("place", activity.getPlace());
+        Log.d("eventdate", activity.getEventdate());
+        Log.d("perstag", activity.getPerStag());
+        Log.d("otherprice", activity.getOthersPrice());
+        Log.d("time", activity.getEventTime());
+        Log.d("description", activity.getDescription());
+        Log.d("organizer",sessionManager.getUserId());
+        Log.d("imagepath",activity.getBannerFileName());
+
+        //----------------------------------------------
         client.get(CommonUtils.baseUrl+"requestEvent", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

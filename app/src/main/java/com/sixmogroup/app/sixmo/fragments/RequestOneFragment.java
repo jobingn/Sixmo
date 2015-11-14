@@ -3,6 +3,7 @@ package com.sixmogroup.app.sixmo.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,6 +39,15 @@ public class RequestOneFragment extends Fragment {
         banner=(ImageView)rootView.findViewById(R.id.imageViewBanner);
         editImage=(ImageView)rootView.findViewById(R.id.imageViewEdit);
         next=(TextView)rootView.findViewById(R.id.nextButton);
+        RequestEventActivity activity= (RequestEventActivity) getActivity();
+        if(activity.getBannerPath()!=null) {
+            banner.setImageBitmap(BitmapFactory.decodeFile(activity.getBannerPath()));
+            bannerPath=activity.getBannerPath();
+        }
+        if(activity.getName()!=null)
+            name.setText(activity.getName());
+        if(activity.getPlace()!=null)
+            place.setText(activity.getPlace());
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

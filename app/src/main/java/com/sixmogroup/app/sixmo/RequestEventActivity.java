@@ -25,6 +25,69 @@ public class RequestEventActivity extends AppCompatActivity {
     String bannerPath;
     String bannerFileName;
 
+    int day;
+    int month;
+    int year;
+
+    int fromHour;
+    int fromMin;
+    int tillHour;
+    int tillMin;
+
+    public int getFromHour() {
+        return fromHour;
+    }
+
+    public void setFromHour(int fromHour) {
+        this.fromHour = fromHour;
+    }
+
+    public int getFromMin() {
+        return fromMin;
+    }
+
+    public void setFromMin(int fromMin) {
+        this.fromMin = fromMin;
+    }
+
+    public int getTillHour() {
+        return tillHour;
+    }
+
+    public void setTillHour(int tillHour) {
+        this.tillHour = tillHour;
+    }
+
+    public int getTillMin() {
+        return tillMin;
+    }
+
+    public void setTillMin(int tillMin) {
+        this.tillMin = tillMin;
+    }
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
     public String getBannerFileName() {
         return bannerFileName;
     }
