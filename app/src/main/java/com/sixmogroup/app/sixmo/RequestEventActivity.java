@@ -1,9 +1,11 @@
 package com.sixmogroup.app.sixmo;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -115,7 +117,22 @@ public class RequestEventActivity extends AppCompatActivity {
     Fragment fragment=null;
     switch (count){
         case 0: {
-            this.finish();
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RequestEventActivity.this);
+            alertDialogBuilder.setTitle("Request Event");
+            alertDialogBuilder.setMessage("Are you want to exit ?");
+            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    finish();
+                    dialog.cancel();
+                }
+            });
+            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
            break;}
         case 1: fragment=new RequestOneFragment(); break;
         case 2: fragment=new RequestTwoFragment(); break;
