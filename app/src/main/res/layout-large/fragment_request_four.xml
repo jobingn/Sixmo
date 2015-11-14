@@ -12,38 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_above="@+id/requestEvent"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price Details"
-        android:layout_marginTop="35dp"
-        android:id="@+id/pricedetailsview"
-        android:textSize="15dp"
-        android:textColor="@color/gray"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price Details"
+            android:layout_marginTop="35dp"
+            android:id="@+id/pricedetailsview"
+            android:textSize="15dp"
+            android:textColor="@color/gray"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/perStag"
-                    android:hint="Per stag          hint:Rs 1500"
-                    android:padding="10dp"
-                    android:textSize="14dp"
-                    android:layout_marginTop="10dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/perStag"
+            android:hint="Per stag          hint:Rs 1500"
+            android:padding="10dp"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/othersPrice"
-                    android:hint="Others             hint:Couples and Girls Free"
-                    android:padding="10dp"
-                    android:layout_marginTop="20dp"
-                    android:textSize="14dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/othersPrice"
+            android:hint="Others             hint:Couples and Girls Free"
+            android:padding="10dp"
+            android:layout_marginTop="30dp"
+            android:textSize="14dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,11 +54,11 @@
             android:layout_below="@+id/cv"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="40dp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="300dp"
             android:inputType="textMultiLine"
             android:id="@+id/name"
             android:textSize="14dp"
@@ -84,7 +84,8 @@
         android:id="@+id/requestEvent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:textSize="25dp" />
 
 
 
