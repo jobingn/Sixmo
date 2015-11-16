@@ -14,9 +14,12 @@ import com.sixmogroup.app.sixmo.fragments.RequestOneFragment;
 import com.sixmogroup.app.sixmo.fragments.RequestThreeFragment;
 import com.sixmogroup.app.sixmo.fragments.RequestTwoFragment;
 
+import java.sql.Date;
+
 public class RequestEventActivity extends AppCompatActivity {
     String name;
     String eventdate;
+    Date date;
     String place;
     String eventTime;
     String perStag;
@@ -34,6 +37,13 @@ public class RequestEventActivity extends AppCompatActivity {
     int tillHour;
     int tillMin;
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     public int getFromHour() {
         return fromHour;
     }

@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
+                .showImageOnFail(R.drawable.default_banner)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(

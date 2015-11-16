@@ -34,9 +34,10 @@ public class RequestTwoFragment extends Fragment {
             public void onClick(View view) {
                 RequestEventActivity activity= (RequestEventActivity) getActivity();
                 activity.setDay(datePicker.getDayOfMonth());
-                activity.setMonth(datePicker.getMonth());
+                activity.setMonth(datePicker.getMonth()+1);
                 activity.setYear(datePicker.getYear());
-                activity.setEventdate(CommonUtils.formatDate(datePicker.getDayOfMonth(),datePicker.getMonth(),datePicker.getYear()));
+                activity.setDate(CommonUtils.getSqlDate(datePicker.getDayOfMonth(),datePicker.getMonth()+1,datePicker.getYear()));
+                activity.setEventdate(CommonUtils.formatDate(datePicker.getDayOfMonth(),datePicker.getMonth()+1,datePicker.getYear()));
                 FragmentManager fm=getActivity().getSupportFragmentManager();
                 FragmentTransaction ft=fm.beginTransaction();
                 ft.replace(R.id.fragment, new RequestThreeFragment());

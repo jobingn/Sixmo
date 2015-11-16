@@ -5,15 +5,18 @@ import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
 
 import com.sixmogroup.app.sixmo.R;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Jobin on Oct 24.
@@ -96,17 +99,29 @@ public class CommonUtils {
                 .append(minutes).append(" ").append(timeSet).toString();
         return aTime;
     }
+    public static Date getSqlDate(int day, int month,int year){
+        java.sql.Date sqlDate=null;
+        try {
+            java.util.Date utilDate = new SimpleDateFormat("dd/M/yyyy").parse(day + "/" + month + "/" + year);
+            sqlDate = new java.sql.Date(utilDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return sqlDate;
+    }
     public static String formatDate(int day, int month,int year){
         String dateFormated="";
         String[] dateMonth={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
         String[] dayWeek={"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-        Calendar c = Calendar.getInstance();
-        try {
-            c.setTime(new SimpleDateFormat("dd/M/yyyy").parse(day+"/"+month+"/"+year));
+        Calendar c = new GregorianCalendar(year,month,day);
+        Log.d("Selected Date", day+"/"+month+"/"+year);
+       /* try {
+            c.setTime(new SimpleDateFormat("dd/M/yyyy").parse(day + "/" + month + "/" + year));
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+        Log.d("Day of week", ""+dayOfWeek);
         if(dayOfWeek < 8 & dayOfWeek!=0){
             dateFormated=dateFormated.concat(dayWeek[dayOfWeek-1]+" "+day);
         }
@@ -114,6 +129,7 @@ public class CommonUtils {
             dateFormated=dateFormated.concat(","+dateMonth[month-1]);
         }
         dateFormated=dateFormated.concat(" "+year);
+        Log.d("Formated Date",dateFormated);
         return dateFormated;
     }
     public static boolean validateEmail(String email){

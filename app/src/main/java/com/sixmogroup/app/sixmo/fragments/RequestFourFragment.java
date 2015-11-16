@@ -164,6 +164,7 @@ public class RequestFourFragment extends Fragment {
         RequestParams params=new RequestParams();
         params.put("name", activity.getName());
         params.put("place",activity.getPlace());
+        params.put("sqldate",activity.getDate());
         params.put("eventdate",activity.getEventdate());
         params.put("perstag",activity.getPerStag());
         params.put("otherprice",activity.getOthersPrice());
@@ -174,18 +175,18 @@ public class RequestFourFragment extends Fragment {
         params.put("status",1);
         else
         params.put("status",0);
-        params.put("organizer",sessionManager.getUserId());
-        params.put("imagepath",activity.getBannerFileName());
+        params.put("organizer", sessionManager.getUserId());
+        params.put("imagepath", activity.getBannerFileName());
         //----------------------------------------------
         Log.d("name", activity.getName());
         Log.d("place", activity.getPlace());
         Log.d("eventdate", activity.getEventdate());
+        Log.d("sqldate", activity.getDate().toString());
         Log.d("perstag", activity.getPerStag());
         Log.d("otherprice", activity.getOthersPrice());
         Log.d("time", activity.getEventTime());
         Log.d("description", activity.getDescription());
         Log.d("organizer",sessionManager.getUserId());
-        Log.d("imagepath",activity.getBannerFileName());
 
         //----------------------------------------------
         client.get(CommonUtils.baseUrl+"requestEvent", params, new JsonHttpResponseHandler() {
