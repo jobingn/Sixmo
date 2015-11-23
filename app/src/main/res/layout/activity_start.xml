@@ -13,6 +13,5 @@
         android:id="@+id/progressBar"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/spiral_loading"
         android:layout_marginTop="70dp" />
 </RelativeLayout>

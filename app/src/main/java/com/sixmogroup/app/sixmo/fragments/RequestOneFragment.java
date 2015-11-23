@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -33,7 +34,7 @@ public class RequestOneFragment extends Fragment {
     ImageView editImage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View rootView= inflater.inflate(R.layout.fragment_request_one, container, false);
+        final View rootView= inflater.inflate(R.layout.fragment_request_one, container, false);
         name=(EditText)rootView.findViewById(R.id.name);
         place=(EditText)rootView.findViewById(R.id.place);
         banner=(ImageView)rootView.findViewById(R.id.imageViewBanner);
@@ -51,16 +52,23 @@ public class RequestOneFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RequestEventActivity activity= (RequestEventActivity) getActivity();
-                activity.setName(name.getText().toString());
-                activity.setBannerPath(bannerPath);
-                activity.setBannerFileName(bannerFileName);
-                activity.setPlace(place.getText().toString());
-                FragmentManager fm=getActivity().getSupportFragmentManager();
-                FragmentTransaction ft=fm.beginTransaction();
-                ft.replace(R.id.fragment, new RequestTwoFragment());
-                ft.addToBackStack(null);
-                ft.commit();
+                if(name.getText().toString().equals("")){
+                    Snackbar.make(rootView, "Event Name is Missing", Snackbar.LENGTH_LONG).show();
+                }else if(place.getText().toString().equals("")){
+                    Snackbar.make(rootView, "Event Venue is Missing", Snackbar.LENGTH_LONG).show();
+                }
+                else {
+                    RequestEventActivity activity = (RequestEventActivity) getActivity();
+                    activity.setName(name.getText().toString());
+                    activity.setBannerPath(bannerPath);
+                    activity.setBannerFileName(bannerFileName);
+                    activity.setPlace(place.getText().toString());
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.fragment, new RequestTwoFragment());
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
             }
         });
         editImage.setOnClickListener(new View.OnClickListener() {

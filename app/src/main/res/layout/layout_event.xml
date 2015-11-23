@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
     android:focusable="true"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:paddingTop="2dp"
-    android:paddingBottom="2dp"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp"
     android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cv"
-        app:cardCornerRadius="3dp"
-        android:layout_below="@+id/pricedetailsview"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp">
+        android:layout_height="180dp">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,36 +19,41 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:alpha="0.9"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:layout_height="60dp"
+            android:alpha="0.6"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:orientation="vertical"
             android:layout_gravity="right|bottom"
-            android:background="@drawable/content_bg"
-            >
+            android:background="@color/dark">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/eventName"
+                android:textStyle="bold"
                 android:text="Event Name"
-                android:layout_marginTop="15dp"
-                android:textColor="#fefefe"/>
+                android:textColor="@color/white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:id="@+id/eventDateTime"
                 android:text="Date and Time"
-                android:textColor="#fefefe"/>
+                android:textColor="@color/white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:id="@+id/eventVenue"
                 android:text="Venue"
-                android:textColor="#fefefe"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
     </FrameLayout>
-    </android.support.v7.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="1dp"
+        android:background="#868686"/>
 </LinearLayout>

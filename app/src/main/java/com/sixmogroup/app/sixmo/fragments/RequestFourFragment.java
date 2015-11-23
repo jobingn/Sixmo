@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -41,7 +42,7 @@ public class RequestFourFragment extends Fragment {
     EditText description;
     String encodedString;
     ProgressDialog progressDialog;
-
+    View rootView;
     @Override
     public void onDetach() {
         super.onDetach();
@@ -53,7 +54,7 @@ public class RequestFourFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View rootView= inflater.inflate(R.layout.fragment_request_four, container, false);
+        rootView= inflater.inflate(R.layout.fragment_request_four, container, false);
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Requesting Event..");
         perStag=(EditText)rootView.findViewById(R.id.perStag);
@@ -70,14 +71,18 @@ public class RequestFourFragment extends Fragment {
         requestEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RequestEventActivity activity= (RequestEventActivity) getActivity();
-                activity.setPerStag(perStag.getText().toString());
-                activity.setOthersPrice(othersPrice.getText().toString());
-                activity.setDescription(description.getText().toString());
-                if(activity.getBannerPath()!=null)
-                encodeImagetoString();
-                else
-                requestUserEvent();
+                if(description.getText().toString().equals("")){
+                    Snackbar.make(rootView, "Please fill description", Snackbar.LENGTH_LONG).show();
+                }else {
+                    RequestEventActivity activity = (RequestEventActivity) getActivity();
+                    activity.setPerStag(perStag.getText().toString());
+                    activity.setOthersPrice(othersPrice.getText().toString());
+                    activity.setDescription(description.getText().toString());
+                    if (activity.getBannerPath() != null)
+                        encodeImagetoString();
+                    else
+                        requestUserEvent();
+                }
             }
         });
         return  rootView;

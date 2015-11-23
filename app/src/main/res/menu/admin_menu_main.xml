@@ -20,6 +20,6 @@
         android:id="@+id/action_bell"
         android:orderInCategory="300"
         android:title="User"
-        android:icon="@drawable/bell"
+        android:icon="@mipmap/ic_bell"
         app:showAsAction="ifRoom"></item>
     </menu>

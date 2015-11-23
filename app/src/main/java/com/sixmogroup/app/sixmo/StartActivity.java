@@ -36,7 +36,7 @@ public class StartActivity extends AppCompatActivity {
             protected Void doInBackground( final Void ... params ) {
                 // tasks to be completed before starting app
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(4000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

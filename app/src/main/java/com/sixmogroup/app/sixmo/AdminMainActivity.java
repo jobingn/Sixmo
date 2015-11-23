@@ -1,6 +1,8 @@
 package com.sixmogroup.app.sixmo;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
@@ -43,9 +45,7 @@ public class AdminMainActivity extends AppCompatActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new EventPagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-
         final ActionBar actionBar = getSupportActionBar();
-
         // Specify that tabs should be displayed in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
