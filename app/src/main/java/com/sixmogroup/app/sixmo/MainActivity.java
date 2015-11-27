@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setSubtitle("Beta Version");
         CommonUtils.checkInternetConnection(this);
-        setTitle("");
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
@@ -138,6 +138,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_my_event_requests) {
             Intent intent=new Intent(getApplicationContext(),MyRequestsActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.action_info) {
+            Intent intent=new Intent(getApplicationContext(),InfoActivity.class);
             startActivity(intent);
         }
         if (id == R.id.action_logout) {

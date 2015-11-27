@@ -18,6 +18,8 @@ public class EventDetailActivity extends AppCompatActivity {
     TextView dateTime;
     TextView venue;
     TextView description;
+    TextView eventPrice;
+    TextView eventOffers;
     ImageView banner;
     ImageButton call;
     ImageLoader imageLoader;
@@ -30,11 +32,15 @@ public class EventDetailActivity extends AppCompatActivity {
         eventName = (TextView) findViewById(R.id.eventName);
         dateTime = (TextView) findViewById(R.id.eventDateTime);
         venue = (TextView) findViewById(R.id.eventVenue);
+        eventPrice = (TextView) findViewById(R.id.eventPrice);
+        eventOffers = (TextView) findViewById(R.id.eventOffers);
         description = (TextView) findViewById(R.id.eventDescription);
         banner = (ImageView) findViewById(R.id.imageViewBanner);
         eventName.setText(getIntent().getExtras().getString("name"));
         dateTime.setText(getIntent().getExtras().getString("datetime"));
         venue.setText(getIntent().getExtras().getString("place"));
+        eventPrice.setText("Rs "+getIntent().getExtras().getString("price"));
+        eventOffers.setText("Offers:"+getIntent().getExtras().getString("offers"));
         description.setText(getIntent().getExtras().getString("description"));
         imageLoader = ImageLoader.getInstance();
         banner.setOnClickListener(new View.OnClickListener() {

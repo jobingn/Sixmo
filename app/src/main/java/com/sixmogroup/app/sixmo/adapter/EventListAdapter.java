@@ -96,6 +96,8 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
                         detailIntent.putExtra("place", response.getString("place"));
                         detailIntent.putExtra("description", response.getString("description"));
                         detailIntent.putExtra("imagepath", response.getString("imagepath"));
+                        detailIntent.putExtra("price", response.getString("price"));
+                        detailIntent.putExtra("offers", response.getString("offers"));
                         detailIntent.putExtra("mobile", response.getString("organizermobile"));
                         context.startActivity(detailIntent);
                     } catch (JSONException e) {

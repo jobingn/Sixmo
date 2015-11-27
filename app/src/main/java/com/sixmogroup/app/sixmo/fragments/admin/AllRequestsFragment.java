@@ -31,7 +31,6 @@ import cz.msebera.android.httpclient.Header;
 
 public class AllRequestsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     List<EventModel> eventModels = new ArrayList<>();
-    ;
     RecyclerView recyclerView;
     RequestListAdapter adapter;
     RecyclerView.LayoutManager mLayoutManager;

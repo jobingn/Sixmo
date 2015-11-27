@@ -31,33 +31,29 @@
                 android:background="@color/dark"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/eventName"
                     android:text="Event Name"
+                    android:ellipsize="end"
                     android:layout_marginTop="10dp"
                     android:textColor="#fefefe"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:id="@+id/eventDateTime"
+                    android:ellipsize="end"
                     android:text="Date and Time"
                     android:textColor="#fefefe"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:id="@+id/eventVenue"
                     android:text="Venue"
+                    android:ellipsize="end"
                     android:textColor="#fefefe"/>
             </LinearLayout>
         </FrameLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginTop="1dp"
-        android:background="#868686"/>
 </LinearLayout>

@@ -17,6 +17,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by Jobin on Oct 24.
@@ -110,21 +112,17 @@ public class CommonUtils {
         return sqlDate;
     }
     public static String formatDate(int day, int month,int year){
+        Log.d("Day",""+day);
+        Log.d("Month",""+month);
+        Log.d("Year",""+year);
         String dateFormated="";
         String[] dateMonth={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
         String[] dayWeek={"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-        Calendar c = new GregorianCalendar(year,month,day);
-        Log.d("Selected Date", day+"/"+month+"/"+year);
-       /* try {
-            c.setTime(new SimpleDateFormat("dd/M/yyyy").parse(day + "/" + month + "/" + year));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
-        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-        Log.d("Day of week", ""+dayOfWeek);
-        if(dayOfWeek < 8 & dayOfWeek!=0){
-            dateFormated=dateFormated.concat(dayWeek[dayOfWeek-1]+" "+day);
-        }
+
+        TimeZone timezone = TimeZone.getDefault();
+        Calendar c = Calendar.getInstance(timezone);
+        c.set(year, month, day);
+        dateFormated=dateFormated.concat(""+day);
         if(month<13 & month!=0){
             dateFormated=dateFormated.concat(","+dateMonth[month-1]);
         }

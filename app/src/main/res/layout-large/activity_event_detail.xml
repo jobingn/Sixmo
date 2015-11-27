@@ -59,6 +59,20 @@
                 android:id="@+id/eventVenue"
                 android:text="Venue"
                 android:textSize="18dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:id="@+id/eventPrice"
+                android:text="Price"
+                android:textSize="15dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:id="@+id/eventOffers"
+                android:text="Offers"
+                android:textSize="15dp" />
         </LinearLayout>
 
         <ScrollView android:id="@+id/textAreaScroller"
