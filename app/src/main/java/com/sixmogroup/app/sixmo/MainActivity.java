@@ -1,6 +1,7 @@
 package com.sixmogroup.app.sixmo;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -80,9 +81,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         populateList(this);
     }
     public void populateList(final Activity activity){
+        final ProgressDialog progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage("Loading Events..");
         AsyncHttpClient client=new AsyncHttpClient();
         eventModels.clear();
         RequestParams params=new RequestParams();
+        progressDialog.show();
         client.post(CommonUtils.baseUrl+"allEvents", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -108,12 +112,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 adapter = new EventListAdapter(activity, eventModels);
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
+                progressDialog.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
+                progressDialog.dismiss();
             }
         });
     }

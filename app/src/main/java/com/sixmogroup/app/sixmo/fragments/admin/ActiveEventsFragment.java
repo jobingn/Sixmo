@@ -1,6 +1,7 @@
 package com.sixmogroup.app.sixmo.fragments.admin;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -62,10 +63,14 @@ public class ActiveEventsFragment extends Fragment implements SwipeRefreshLayout
         AsyncHttpClient client=new AsyncHttpClient();
         eventModels.clear();
         RequestParams params=new RequestParams();
+        final ProgressDialog progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage("Loading events..");
+        progressDialog.show();
         client.post(CommonUtils.baseUrl + "allEvents", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
+                progressDialog.dismiss();
                 for (int i = 0; i < response.length(); i++) {
                     JSONObject object = null;
                     try {
@@ -92,7 +97,7 @@ public class ActiveEventsFragment extends Fragment implements SwipeRefreshLayout
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
+                progressDialog.dismiss();
             }
         });
     }

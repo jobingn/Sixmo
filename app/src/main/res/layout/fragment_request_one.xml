@@ -35,6 +35,11 @@
             android:src="@android:drawable/ic_menu_edit"
             />
     </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +69,7 @@
         android:id="@+id/place"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+        </LinearLayout>
 </LinearLayout>
 
     <TextView

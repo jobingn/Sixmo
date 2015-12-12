@@ -1,6 +1,7 @@
 package com.sixmogroup.app.sixmo;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -66,38 +68,55 @@ public class MyRequestsActivity extends AppCompatActivity implements SwipeRefres
         RequestParams params=new RequestParams();
         UserSessionManager sessionManager=new UserSessionManager(getApplicationContext());
         params.add("userid", sessionManager.getUserId());
-        client.get(CommonUtils.baseUrl + "getUserRequests", params, new JsonHttpResponseHandler() {
+        final ProgressDialog progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage("Loading events..");
+        progressDialog.show();
+        client.get(CommonUtils.baseUrl+"getUserRequests", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                progressDialog.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
+                try {
+                    if(response.getString("response").equals("failed"))
+                    Toast.makeText(getApplicationContext(),"No Events to display",Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
-                if(response.length()==0){
-                    Toast.makeText(getApplicationContext(),"No Events to display",Toast.LENGTH_LONG).show();
-                }
-                for (int i = 0; i < response.length(); i++) {
-                    JSONObject object = null;
-                    try {
-                        object = response.getJSONObject(i);
-                        EventModel model = new EventModel();
-                        model.setEventid(object.getString("eventid"));
-                        model.setName(object.getString("name"));
-                        model.setEventDate(object.getString("eventdate"));
-                        model.setTime(object.getString("starttime"));
-                        model.setVenue(object.getString("place"));
-                        model.setImagePath(object.getString("imagepath"));
-                        model.setOrganizerId(object.getString("organizerid"));
-                        EventModel model1 = new EventModel();
-                        eventModels.add(model);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                adapter = new EventListAdapter(activity, eventModels);
-                recyclerView.setAdapter(adapter);
+                Log.d("My Requests", response.toString());
                 swipeRefreshLayout.setRefreshing(false);
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject object = null;
+                        try {
+                            object = response.getJSONObject(i);
+                            EventModel model = new EventModel();
+                            model.setEventid(object.getString("eventid"));
+                            model.setName(object.getString("name"));
+                            model.setEventDate(object.getString("eventdate"));
+                            model.setTime(object.getString("starttime"));
+                            model.setVenue(object.getString("place"));
+                            model.setImagePath(object.getString("imagepath"));
+                            model.setOrganizerId(object.getString("organizerid"));
+                            EventModel model1 = new EventModel();
+                            eventModels.add(model);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    adapter = new EventListAdapter(activity, eventModels);
+                    recyclerView.setAdapter(adapter);
+                    swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                progressDialog.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
                 super.onFailure(statusCode, headers, responseString, throwable);
 
             }

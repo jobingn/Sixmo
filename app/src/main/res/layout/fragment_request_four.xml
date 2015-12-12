@@ -65,13 +65,12 @@
             android:textSize="14dp"
             android:hint="@string/event_description_hint"
             android:padding="10dp"
+            android:scrollbars="vertical"
             android:layout_below="@+id/textView9"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="10dp" />
     </LinearLayout>
-
-
 
     <TextView
         android:layout_width="150dp"
@@ -81,7 +80,7 @@
         android:textColor="@color/white"
         android:background="@drawable/button_background"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/next"
+        android:text="Request Event"
         android:id="@+id/requestEvent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

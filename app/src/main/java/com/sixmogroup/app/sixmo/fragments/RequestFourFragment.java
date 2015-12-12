@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -26,11 +25,8 @@ import com.sixmogroup.app.sixmo.R;
 import com.sixmogroup.app.sixmo.RequestEventActivity;
 import com.sixmogroup.app.sixmo.utils.CommonUtils;
 import com.sixmogroup.app.sixmo.utils.UserSessionManager;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 
 import cz.msebera.android.httpclient.Header;
@@ -174,7 +170,11 @@ public class RequestFourFragment extends Fragment {
         params.put("perstag",activity.getPerStag());
         params.put("otherprice",activity.getOthersPrice());
         params.put("time",activity.getEventTime());
-        params.put("description",activity.getDescription());
+        // convert description
+        String formatDescription=activity.getDescription();
+                formatDescription=formatDescription.replaceAll("'", "\\\\'");
+                formatDescription=formatDescription.replaceAll("\"", "\\\\\"");
+        params.put("description",formatDescription);
         UserSessionManager sessionManager=new UserSessionManager(getActivity());
         if(sessionManager.getUserRole().equals("admin"))
         params.put("status",1);
@@ -194,7 +194,7 @@ public class RequestFourFragment extends Fragment {
         Log.d("organizer",sessionManager.getUserId());
 
         //----------------------------------------------
-        client.get(CommonUtils.baseUrl+"requestEvent", params, new JsonHttpResponseHandler() {
+        client.post(CommonUtils.baseUrl+"requestEvent", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -207,7 +207,7 @@ public class RequestFourFragment extends Fragment {
                         ft.replace(R.id.fragment, new RequestDoneFragment());
                         ft.commit();
                     } else {
-                        Toast.makeText(getActivity(), "Event request failure", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Event request failure"+response.toString(), Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
                 } catch (JSONException e) {

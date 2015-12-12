@@ -1,6 +1,7 @@
 package com.sixmogroup.app.sixmo.adapter;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -84,10 +85,14 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
             AsyncHttpClient client=new AsyncHttpClient();
             RequestParams params=new RequestParams();
             params.add("eventid", eventid);
+            final ProgressDialog progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage("Please wait..");
+            progressDialog.show();
             client.get(CommonUtils.baseUrl + "eventDetails", params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     super.onSuccess(statusCode, headers, response);
+                    progressDialog.dismiss();
                     try {
                         Intent detailIntent=new Intent(context, RequestEventDetailActivity.class);
                         detailIntent.putExtra("eventid", response.getString("eventid"));
@@ -106,6 +111,7 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     super.onFailure(statusCode, headers, responseString, throwable);
+                    progressDialog.dismiss();
                     Toast.makeText(context, "Failed to load details", Toast.LENGTH_LONG).show();
                 }
             });
