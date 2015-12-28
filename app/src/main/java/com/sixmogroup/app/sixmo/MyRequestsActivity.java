@@ -102,6 +102,9 @@ public class MyRequestsActivity extends AppCompatActivity implements SwipeRefres
                             model.setVenue(object.getString("place"));
                             model.setImagePath(object.getString("imagepath"));
                             model.setOrganizerId(object.getString("organizerid"));
+                            model.setDescription(object.getString("description"));
+                            model.setPrice(object.getString("price"));
+                            model.setSqlDate(object.getString("sqldate"));
                             EventModel model1 = new EventModel();
                             eventModels.add(model);
                         } catch (JSONException e) {
@@ -118,7 +121,6 @@ public class MyRequestsActivity extends AppCompatActivity implements SwipeRefres
                 progressDialog.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
         });
     }

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:id="@+id/main_layout"
+        android:layout_height="150dp">
+        <LinearLayout
+            android:layout_width="140dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventDay"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/colorAccent"
+                android:gravity="center"
+                android:text="Saturday"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/time"
+                android:textSize="12dp"
+                android:text="7 pm"
+                android:gravity="center" />
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                android:scaleType="fitCenter"
+                app:siBorderWidth="0.8dp"
+                app:siBorderColor="#ccc"
+                android:id="@+id/imageViewBanner"
+                android:src="@mipmap/ic_launcher_evurbs"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:id="@+id/eventName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Event Name"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/ic_place"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:id="@+id/eventVenue"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="14dp"
+                    android:text="Bangalore"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/date"/>
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="18dp"
+                    android:maxLines="1"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/eventDateTime"
+                    android:textSize="14dp"
+                    android:text="Dec 25"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/rupee"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:id="@+id/price"
+                    android:textSize="14dp"
+                    android:text="5000"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/eventDescription"
+                android:textSize="14dp"
+                android:maxLines="3"
+                android:text="Short Description of the event and special offers and detailed entry rates.Short Description of the event and special offers and detailed entry rates.Short Description of the event and special,Short Description of the event and special.Short Description of the event and special"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="0.5dp"
+        android:layout_height="0.3dp"
+        android:layout_below="@+id/main_layout"
+        android:background="#ccc"
+        android:layout_marginLeft="20dp" />
+</RelativeLayout>

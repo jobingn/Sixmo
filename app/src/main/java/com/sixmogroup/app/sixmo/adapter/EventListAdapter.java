@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -44,7 +45,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.layout_event, parent, false);
+        View view = inflater.inflate(R.layout.event_item, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
@@ -54,7 +55,11 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.eventid=data.get(position).getEventid();
         holder.title.setText(data.get(position).getName());
         holder.venue.setText(data.get(position).getVenue());
-        holder.dateTime.setText("On "+data.get(position).getEventDate() + " at " + data.get(position).getTime());
+        holder.date.setText(data.get(position).getEventDate());
+        holder.time.setText(data.get(position).getTime());
+        holder.dayOfWeek.setText(CommonUtils.getDayFromSqlDate(data.get(position).getSqlDate()));
+        holder.description.setText(data.get(position).getDescription());
+        holder.rate.setText(data.get(position).getPrice());
         ImageLoader imageLoader = ImageLoader.getInstance();
         holder.banner.setImageBitmap(null);
         imageLoader.displayImage(CommonUtils.imageUploadUrl + data.get(position).getImagePath(), holder.banner);
@@ -68,17 +73,25 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         TextView venue;
-        TextView dateTime;
-        ImageView banner;
+        TextView date;
+        TextView time;
+        TextView rate;
+        TextView dayOfWeek;
+        TextView description;
+        CircularImageView banner;
         String eventid;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             title = (TextView) itemView.findViewById(R.id.eventName);
-            dateTime = (TextView) itemView.findViewById(R.id.eventDateTime);
+            date = (TextView) itemView.findViewById(R.id.eventDateTime);
+            time = (TextView) itemView.findViewById(R.id.time);
             venue= (TextView) itemView.findViewById(R.id.eventVenue);
-            banner=(ImageView)itemView.findViewById(R.id.imageViewBanner);
+            rate= (TextView) itemView.findViewById(R.id.price);
+            description= (TextView) itemView.findViewById(R.id.eventDescription);
+            dayOfWeek= (TextView) itemView.findViewById(R.id.eventDay);
+            banner=(CircularImageView)itemView.findViewById(R.id.imageViewBanner);
         }
 
         @Override
@@ -97,7 +110,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
                     try {
                         Intent detailIntent=new Intent(context, EventDetailActivity.class);
                         detailIntent.putExtra("name", response.getString("name"));
-                        detailIntent.putExtra("datetime", "On " + response.getString("eventdate") + " at " + response.getString("time"));
+                        detailIntent.putExtra("datetime", response.getString("eventdate") + " on " + response.getString("time"));
                         detailIntent.putExtra("place", response.getString("place"));
                         detailIntent.putExtra("description", response.getString("description"));
                         detailIntent.putExtra("imagepath", response.getString("imagepath"));

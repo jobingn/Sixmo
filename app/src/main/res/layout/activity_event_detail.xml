@@ -42,37 +42,77 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/eventName"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:text="Event Name"
                 android:layout_marginTop="15dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@mipmap/ic_place"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:id="@+id/eventVenue"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="10dp"
+                    android:text="Bangalore"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/date"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:maxLines="1"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/eventDateTime"
+                    android:textSize="10dp"
+                    android:text="Dec 25"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical" />
+
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="7.5dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/rupee"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp"
+                    android:id="@+id/eventPrice"
+                    android:textSize="10dp"
+                    android:text="5000"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:id="@+id/eventDateTime"
-                android:textSize="15dp"
-                android:text="Date and Time" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:id="@+id/eventVenue"
-                android:text="Venue"
-                android:textSize="15dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:id="@+id/eventPrice"
-                android:text="Price"
-                android:textSize="15dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/eventOffers"
                 android:text="Offers"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
         </LinearLayout>
 
         <ScrollView android:id="@+id/textAreaScroller"
@@ -86,7 +126,8 @@
             android:text="Event Description"
             android:padding="10dp"
             android:layout_height="match_parent"
-            android:id="@+id/eventDescription" />
+            android:id="@+id/eventDescription"
+            android:textSize="12dp" />
         </ScrollView>
 
     </LinearLayout>

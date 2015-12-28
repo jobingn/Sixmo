@@ -78,6 +78,9 @@ public class AllRequestsFragment extends Fragment implements SwipeRefreshLayout.
                         model.setVenue(object.getString("place"));
                         model.setImagePath(object.getString("imagepath"));
                         model.setOrganizerId(object.getString("organizerid"));
+                        model.setDescription(object.getString("description"));
+                        model.setPrice(object.getString("price"));
+                        model.setSqlDate(object.getString("sqldate"));
                         EventModel model1 = new EventModel();
                         eventModels.add(model);
                     } catch (JSONException e) {

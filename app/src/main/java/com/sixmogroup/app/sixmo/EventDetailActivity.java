@@ -39,8 +39,8 @@ public class EventDetailActivity extends AppCompatActivity {
         eventName.setText(getIntent().getExtras().getString("name"));
         dateTime.setText(getIntent().getExtras().getString("datetime"));
         venue.setText(getIntent().getExtras().getString("place"));
-        eventPrice.setText("Rs "+getIntent().getExtras().getString("price"));
-        eventOffers.setText("Offers:"+getIntent().getExtras().getString("offers"));
+        eventPrice.setText(getIntent().getExtras().getString("price"));
+        eventOffers.setText(getIntent().getExtras().getString("offers"));
         description.setText(getIntent().getExtras().getString("description"));
         imageLoader = ImageLoader.getInstance();
         banner.setOnClickListener(new View.OnClickListener() {

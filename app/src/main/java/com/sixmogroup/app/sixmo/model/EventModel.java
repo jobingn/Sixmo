@@ -11,9 +11,25 @@ public class EventModel {
     String eventDate;
     String description;
     String organizerId;
+    String sqlDate;
     String imagePath;
     String requestedDate;
+    String price;
+    
+    public String getSqlDate() {
+        return sqlDate;
+    }
 
+    public void setSqlDate(String sqlDate) {
+        this.sqlDate = sqlDate;
+    }
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public String getOrganizerId() {
         return organizerId;

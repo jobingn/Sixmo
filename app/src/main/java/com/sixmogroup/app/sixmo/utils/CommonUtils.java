@@ -144,4 +144,31 @@ public class CommonUtils {
             return true;
         }
     }
+    public static String getDayFromSqlDate(String sqlDate) {
+        String day=null;
+        Calendar calendar = Calendar.getInstance();
+            int year=Integer.parseInt(sqlDate.substring(0, 4));
+            int month=Integer.parseInt(sqlDate.substring(5,7));
+            int dayofMonth=Integer.parseInt(sqlDate.substring(8,10));
+            Log.d("Sql Date Passed",sqlDate);
+            Log.d("Year",""+year);
+            Log.d("Month",""+month);
+            Log.d("Day", "" + dayofMonth);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month-1);
+        calendar.set(Calendar.DAY_OF_MONTH, dayofMonth);
+        Log.d("Date converted", calendar.getTime().toString());
+        int i = calendar.get(Calendar.DAY_OF_WEEK);
+        Log.d("Day of Week",""+i);
+        switch (i) {
+            case Calendar.SUNDAY: day="Sunday"; break;
+            case Calendar.MONDAY: day="Monday"; break;
+            case Calendar.TUESDAY: day="Tuesday"; break;
+            case Calendar.WEDNESDAY: day="Wednesday"; break;
+            case Calendar.THURSDAY: day="Thursday"; break;
+            case Calendar.FRIDAY: day="Friday"; break;
+            case Calendar.SATURDAY: day="Saturday"; break;
+        }
+        return day;
+    }
 }
